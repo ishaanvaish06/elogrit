@@ -76,3 +76,13 @@ async def generic_exception_handler(request: Request, exc: Exception):
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={"error": "An unexpected internal server error occurred"},
     )
+
+
+if __name__ == "__main__":
+    import sys
+    from pathlib import Path
+    import uvicorn
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    uvicorn.run("app.main:app", host=settings.HOST, port=settings.PORT, reload=True)
+
